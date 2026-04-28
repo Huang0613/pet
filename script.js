@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 const startBtn = document.getElementById('start-btn');
 const restartBtn = document.getElementById('restart-btn');
 // 1. 先列出你所有的動物檔名 (請確認 images 資料夾裡有這些檔案)
-const petFiles = ['mouse.png', 'duck.png', 'cat.png', 'capybaras.png']; 
+const petFiles = ['./mouse.png', 'duck.png', 'cat.png', 'capybaras.png']; 
 
 // 2. 建立一個陣列來存入所有的圖片物件
 const petImages = [];
@@ -11,7 +11,7 @@ const petImages = [];
 // 3. 用迴圈把每一張圖都讀取進來
 petFiles.forEach(file => {
     const img = new Image();
-    img.src = 'images/' + file;
+    img.src = './images/' + file;
     petImages.push(img);
 });
 // 遊戲設定
@@ -71,21 +71,18 @@ function endGame() {
 
 function update(timestamp) {
     if (gameOver) {
-        // 1. 清空畫布，讓背景森林完全透出來
+        // 確保這行有執行，才會把原本那層灰灰的東西擦掉
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // 2. 畫「遊戲結束」：顏色加深，位置往上移 (原本是 220，我們改成 180)
-        ctx.fillStyle = "#4A4A4A"; // 深灰色
+        ctx.fillStyle = "#4A4A4A"; 
         ctx.textAlign = "center";
         ctx.font = "bold 42px Arial";
         ctx.fillText("遊戲結束", canvas.width / 2, 180);
 
-        // 3. 畫「最終得分」：顏色換成醒目的粉紅，位置在按鈕上方 (原本 380，改成 280)
         ctx.fillStyle = "#FF6B6B"; 
         ctx.font = "bold 32px Arial";
         ctx.fillText("最終得分：" + score, canvas.width / 2, 280);
 
-        // 4. 顯示按鈕
         restartBtn.style.display = "block";
         return;
     }
