@@ -7,16 +7,18 @@
     <link rel="icon" href="images/Favicon.png" type="image/png">
     
     <title>萌寵接接樂</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">   
+    <style>
+        body {
+            /* 加上 ./ 確保在 GitHub Pages 路徑正確 */
+            background-image: url('./images/game_background.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
-<body>
-    <div id="game-container">
-        <canvas id="game" width="400" height="600"></canvas>
-        
-        <button id="start-btn">開始遊戲</button>
-        <button id="restart-btn" style="display:none;">重新開始</button>
-    </div>
-
-    <script src="script.js"></script>
-</body>
 </html>
