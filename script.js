@@ -2,16 +2,24 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const startBtn = document.getElementById('start-btn');
 const restartBtn = document.getElementById('restart-btn');
-// 1. 先列出你所有的動物檔名 (請確認 images 資料夾裡有這些檔案)
-const petFiles = ['./mouse.png', 'duck.png', 'cat.png', 'capybaras.png']; 
 
-// 2. 建立一個陣列來存入所有的圖片物件
+// 1. 檔名要跟你的 images 資料夾裡面完全一樣（檢查大小寫！）
+const petFiles = ['mouse.png', 'duck.png', 'cat.png', 'capybaras.png'];
 const petImages = [];
 
-// 3. 用迴圈把每一張圖都讀取進來
-petFiles.forEach(file => {
+// 2. 使用計數器確保所有圖片載入完畢
+let imagesLoaded = 0;
+petFiles.forEach((file) => {
     const img = new Image();
-    img.src = './images/' + file;
+    // ✨ 統一路徑格式
+    img.src = './images/' + file; 
+    img.onload = () => {
+        imagesLoaded++;
+        console.log(file + " 載入成功");
+    };
+    img.onerror = () => {
+        console.error(file + " 載入失敗，路徑可能錯了！");
+    };
     petImages.push(img);
 });
 // 遊戲設定
@@ -31,6 +39,7 @@ let levelUpTimer = 0;
 
 function drawBasket() {
     ctx.fillStyle = "brown";
+    // ✨ 請檢查這行，確保是 width 和 height (結尾是 t)
     ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
 }
 

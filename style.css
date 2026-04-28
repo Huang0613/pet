@@ -1,19 +1,15 @@
-/* 1. 全域設定：確保背景鋪滿 */
 body {
     margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100vw;
-    /* 背景圖設定 */
-    background-image: url('./images/game_background.png'); 
+    /* ✨ 試試看加上 ./ 並且確認副檔名是 .png */
+    background-image: url('./images/game_background.png?update=0428'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll; /* ✨ 加入這行，增加手機相容性 */
-    overflow: hidden; /* 防止出現捲軸 */
+    background-attachment: scroll; /* 增加手機相容性 */
 }
 
 /* 2. 遊戲容器：這是按鈕定位的基準點 */
